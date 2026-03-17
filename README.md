@@ -1,6 +1,6 @@
 # Abdullah Ghani's Portfolio
 
-This is the repository for my personal portfolio website, showcasing my skills and projects as a MERN Stack Developer, AI Enthusiast, and DevOps Practitioner.
+This is the repository for my personal portfolio website, showcasing my work as a **Software Engineer specializing in Generative AI and MLOps** (RAG, LLM fine-tuning, and production-grade ML systems).
 
 The site is built with:
 - **Next.js** for the React framework

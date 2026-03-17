@@ -24,8 +24,23 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
-// PDF generation utility
+// Resume download utility
+const downloadResume = () => {
+  const link = document.createElement("a")
+  link.href = "/MuhammadAbdulllahGhani-Resume.pdf"
+  link.download = "Muhammad_Abdullah_Ghani_Resume.pdf"
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+
+// PDF generation utility (fallback)
 const generateResumePDF = () => {
+  downloadResume()
+}
+
+// Original PDF generation utility
+const generateResumePDFOriginal = () => {
   if (typeof window === "undefined") return
 
   try {
@@ -51,30 +66,74 @@ const generateResumePDF = () => {
           .section-title { font-size: 20px; font-weight: bold; color: #1e40af; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; margin-bottom: 15px; }
           .project { margin-bottom: 20px; padding: 15px; border: 1px solid #e5e7eb; border-radius: 8px; }
           .tech-item { display: inline-block; background: #dbeafe; color: #1e40af; padding: 2px 6px; margin: 2px; border-radius: 3px; font-size: 11px; }
+          ul { margin: 8px 0 0 18px; padding: 0; }
+          li { margin: 4px 0; }
         </style>
       </head>
       <body>
         <div class="header">
           <div class="name">MUHAMMAD ABDULLAH GHANI</div>
-          <div class="title">Software Engineer</div>
-          <div class="contact">abdullaghani206@gmail.com | +92 3168848001 | Islamabad</div>
+          <div class="title">Software Engineer — Generative AI & MLOps</div>
+          <div class="contact">abdullaghani206@gmail.com | +92 316 884 8001 | linkedin.com/in/abdullahghani | github.com/Muhammad-AbdullahGhani</div>
+        </div>
+        <div class="section">
+          <div class="section-title">PROFESSIONAL SUMMARY</div>
+          <p>
+            Results-driven Software Engineer specializing in Generative AI, LLM fine-tuning, RAG, and MLOps. Built scalable microservices and production ML pipelines with Docker, Kubernetes, and GitHub Actions.
+          </p>
         </div>
         <div class="section">
           <div class="section-title">TECHNICAL SKILLS</div>
-          <p>MERN Stack, AI/ML, DevOps, Python, JavaScript, React, Node.js, MongoDB, Docker, Kubernetes</p>
+          <p><b>Languages:</b> Python, C++, JavaScript (Node.js), SQL</p>
+          <p><b>AI/ML & GenAI:</b> PyTorch, Transformers (BERT/DeBERTA/Llama), RAG, LLMs, LSTM, ResNet, Scikit-learn</p>
+          <p><b>DevOps & Cloud:</b> Docker, Kubernetes, GitHub Actions, FastAPI, Nginx, Microservices</p>
+          <p><b>Web & Data:</b> React.js, Tailwind CSS, Flask, MongoDB, PostgreSQL</p>
         </div>
         <div class="section">
           <div class="section-title">PROJECTS</div>
           <div class="project">
-            <h3>AI-Powered Multimodal Sentiment Analysis System</h3>
-            <p>Developed an AI system using ResNet18-based CNN with React frontend and Flask backend.</p>
-            <div><span class="tech-item">Python</span><span class="tech-item">PyTorch</span><span class="tech-item">React</span></div>
+            <h3>FinTech Adaptive Forecasting System</h3>
+            <p>Microservices platform that continuously retrains LSTM & Transformer models on real-time market data.</p>
+            <ul>
+              <li>Built MLOps pipeline with drift detection (MAE/RMSE) and interactive candlestick visualizations.</li>
+              <li>Deployed via Docker + Kubernetes with GitHub Actions CI/CD for zero-downtime reliability.</li>
+            </ul>
+            <div><span class="tech-item">Python</span><span class="tech-item">MLOps</span><span class="tech-item">Docker</span><span class="tech-item">Kubernetes</span><span class="tech-item">CI/CD</span></div>
           </div>
           <div class="project">
-            <h3>Weather Dashboard with ChatBot Integration</h3>
-            <p>5-day weather forecast dashboard with AI chatbot integration.</p>
-            <div><span class="tech-item">JavaScript</span><span class="tech-item">HTML</span><span class="tech-item">CSS</span></div>
+            <h3>ILM-ORA — AI-Powered Career & University Recommendation (FYP)</h3>
+            <p>FastAPI microservices delivering university rankings and career guidance from HEC & alumni data.</p>
+            <ul>
+              <li>Fine-tuned BERT for Aspect-Based Sentiment Analysis, improving accuracy by 12% over baseline.</li>
+              <li>Built regression model predicting salary ranges and visualizing career trajectories.</li>
+            </ul>
+            <div><span class="tech-item">FastAPI</span><span class="tech-item">BERT</span><span class="tech-item">NLP</span><span class="tech-item">Scikit-learn</span><span class="tech-item">MERN</span></div>
           </div>
+          <div class="project">
+            <h3>QuickChat AI — GenAI Customer Support Chatbot (SaaS)</h3>
+            <p>RAG system generating business-specific answers from uploaded knowledge bases, built for scalable deployment.</p>
+            <ul>
+              <li>Fine-tuned domain LLM for tone consistency and reliability.</li>
+              <li>Built pipelines for dynamic retrieval and production-grade serving.</li>
+            </ul>
+            <div><span class="tech-item">RAG</span><span class="tech-item">LLMs</span><span class="tech-item">FastAPI</span><span class="tech-item">Python</span></div>
+          </div>
+          <div class="project">
+            <h3>AI-Powered Multimodal Sentiment Analysis</h3>
+            <p>Multimodal model classifying 7 emotions from images + text using ResNet18, with a responsive web UI.</p>
+            <div><span class="tech-item">PyTorch</span><span class="tech-item">ResNet18</span><span class="tech-item">React</span><span class="tech-item">Flask</span><span class="tech-item">Tailwind</span></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-title">EDUCATION</div>
+          <p><b>National University of Computer and Emerging Sciences</b> — B.S. Software Engineering (Aug 2022 – Present)</p>
+        </div>
+        <div class="section">
+          <div class="section-title">CERTIFICATIONS</div>
+          <ul>
+            <li>Supervised Machine Learning: Regression and Classification (Coursera)</li>
+            <li>Advanced Learning Algorithms (Coursera)</li>
+          </ul>
         </div>
       </body>
       </html>
@@ -187,87 +246,57 @@ function Extreme3DComputer() {
   )
 }
 
-// Enhanced Modern Hero Background
+// Refined Modern Hero Background
 function ModernHeroBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Enhanced Animated Grid with Depth */}
-      <div className="absolute inset-0 opacity-30">
+      {/* Subtle Animated Grid */}
+      <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px)
+              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: "60px 60px",
-            filter: "drop-shadow(0 0 10px rgba(59, 130, 246, 0.1))",
+            backgroundSize: "80px 80px",
           }}
         />
       </div>
 
-      {/* Enhanced Floating Orbs with Better Depth */}
-      {[...Array(8)].map((_, i) => (
+      {/* Subtle Floating Accents */}
+      {[...Array(4)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full"
           style={{
-            width: `${120 + i * 40}px`,
-            height: `${120 + i * 40}px`,
+            width: `${200 + i * 60}px`,
+            height: `${200 + i * 60}px`,
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
             background: `radial-gradient(circle at 30% 30%, ${
-              i % 3 === 0 ? "#06b6d4" : i % 3 === 1 ? "#8b5cf6" : "#ec4899"
-            } 0%, ${i % 3 === 0 ? "#3b82f6" : i % 3 === 1 ? "#a855f7" : "#f97316"}66 70%, transparent 100%)`,
-            filter: "blur(40px)",
-            boxShadow: `0 0 100px ${i % 3 === 0 ? "#06b6d4" : i % 3 === 1 ? "#8b5cf6" : "#ec4899"}33`,
+              i % 2 === 0 ? "#3b82f6" : "#8b5cf6"
+            } 0%, transparent 100%)`,
+            filter: "blur(60px)",
+            opacity: 0.08,
           }}
           animate={{
-            x: [0, 150, -100, 0],
-            y: [0, -150, 100, 0],
-            scale: [1, 1.3, 0.7, 1],
-            opacity: [0.2, 0.5, 0.1, 0.2],
+            x: [0, 100, -50, 0],
+            y: [0, -100, 50, 0],
+            scale: [1, 1.2, 0.8, 1],
           }}
           transition={{
-            duration: 20 + i * 3,
+            duration: 25 + i * 5,
             repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
           }}
         />
       ))}
-
-      {/* Enhanced Code Rain Effect */}
-      <div className="absolute inset-0 overflow-hidden opacity-25">
-        {[...Array(25)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-cyan-400 font-mono font-bold"
-            style={{
-              left: `${(i * 4) % 100}%`,
-              top: "-10%",
-              fontSize: `${12 + Math.random() * 8}px`,
-              textShadow: "0 0 10px rgba(6, 182, 212, 0.5)",
-            }}
-            animate={{
-              y: ["0vh", "110vh"],
-              opacity: [0, 1, 1, 0],
-            }}
-            transition={{
-              duration: 10 + Math.random() * 5,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 8,
-              ease: "linear",
-            }}
-          >
-            {["01", "10", "11", "00", "AI", "ML", "{}", "</>", "fn", "=>", "&&", "||"][Math.floor(Math.random() * 12)]}
-          </motion.div>
-        ))}
-      </div>
     </div>
   )
 }
 
-// Enhanced Glassmorphism Card Component
+// Enhanced Glassmorphism Card with Premium Effects
 function GlassCard({
   children,
   className = "",
@@ -276,24 +305,38 @@ function GlassCard({
   return (
     <motion.div
       className={`
-        relative rounded-2xl overflow-hidden
-        border border-slate-700 shadow-lg
-        backdrop-blur-lg
-        bg-slate-800/40
-        text-slate-200
-        transition-all duration-500
+        relative rounded-xl overflow-hidden
+        border border-slate-700 
+        backdrop-blur-xl
+        bg-gradient-to-br from-slate-800/40 to-slate-900/40
+        text-slate-100
+        transition-all duration-300
+        shadow-2xl
         ${className}
       `}
-      style={{
-        boxShadow: `0 4px 24px 0 rgba(0, 0, 0, 0.2)`
-      }}
       whileHover={{
         scale: 1.02,
-        y: -8,
-        boxShadow: `0 12px 32px 0 rgba(0, 0, 0, 0.25)`
+        y: -6,
+        boxShadow: "0 20px 60px rgba(59, 130, 246, 0.15)",
       }}
       {...props}
     >
+      {/* Premium shimmer effect on hover */}
+      <motion.div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{
+          background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.05) 100%)",
+        }}
+      />
+      
+      {/* Glow border effect */}
+      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{
+          background: "linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent)",
+          animation: "shimmer 2s infinite",
+        }}
+      />
+
       <div className="relative z-10">{children}</div>
     </motion.div>
   )
@@ -316,13 +359,14 @@ function FadeInUp({ children, delay = 0 }: { children: React.ReactNode; delay?: 
   )
 }
 
-function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function AnimatedSection({ children, className = "", id = "" }: { children: React.ReactNode; className?: string; id?: string }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
   return (
     <motion.div
       ref={ref}
+      id={id}
       className={className}
       initial={{ opacity: 0, y: 100 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
@@ -355,6 +399,13 @@ export default function Portfolio() {
       console.error("Scroll error:", error)
     }
   }
+
+  // Stats for wow factor
+  const stats = [
+    { label: "ML Projects", value: "4+", icon: <Brain className="w-4 h-4" /> },
+    { label: "Production Systems", value: "3+", icon: <Server className="w-4 h-4" /> },
+    { label: "Tech Stack", value: "15+", icon: <Code className="w-4 h-4" /> },
+  ]
 
   useEffect(() => {
     if (!mounted) return
@@ -411,57 +462,74 @@ export default function Portfolio() {
   }
 
   const skills = {
-    Frontend: ["React", "JavaScript", "HTML/CSS", "Tailwind CSS"],
-    Backend: ["Node.js", "Express.js", "Python", "Flask"],
-    Database: ["MongoDB", "SQL"],
-    "AI/ML": ["PyTorch", "Machine Learning", "Computer Vision"],
-    DevOps: ["Docker", "Kubernetes", "GitHub Actions"],
-    Languages: ["Java", "Python", "C/C++", "JavaScript"],
+    "AI/GenAI": ["RAG", "LLM Fine-Tuning", "Transformers (BERT/DeBERTA/Llama)", "PyTorch", "Scikit-learn"],
+    "MLOps/DevOps": ["Docker", "Kubernetes", "GitHub Actions", "CI/CD", "Microservices"],
+    "Backend & APIs": ["FastAPI", "Flask", "Node.js", "Nginx"],
+    "Web & Data": ["React.js", "Tailwind CSS", "MongoDB", "PostgreSQL", "SQL"],
+    Languages: ["Python", "C++", "JavaScript (Node.js)", "SQL"],
   }
 
   const projects = [
     {
-      title: "AI-Powered Multimodal Sentiment Analysis",
+      title: "FinTech Adaptive Forecasting System",
       description:
-        "Developed an AI system to predict emotions from images and text using ResNet18-based CNN with React frontend and Flask backend.",
-      tech: ["Python", "PyTorch", "React", "Flask", "Tailwind CSS"],
+        "Microservices platform that continuously retrains LSTM & Transformer models on real-time market data with drift detection (MAE/RMSE) and production-grade CI/CD.",
+      tech: ["Python", "LSTM", "Transformers", "Docker", "Kubernetes", "GitHub Actions", "MLOps"],
       icon: <Brain className="w-6 h-6" />,
-      link: "https://github.com/Muhammad-AbdullahGhani/AI-Project",
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Weather Dashboard with ChatBot",
-      description:
-        "A 5-day weather forecast dashboard integrated with an AI chatbot using OpenWeather API and Gemini API.",
-      tech: ["JavaScript", "HTML", "CSS", "OpenWeather API", "Gemini API"],
-      icon: <Code className="w-6 h-6" />,
-      link: "https://github.com/Muhammad-AbdullahGhani/Website-Dashboard",
+      link: "https://github.com/Muhammad-AbdullahGhani/Fintech_Forecasting_System",
       gradient: "from-cyan-500 to-blue-500",
     },
     {
-      title: "Chess Game with Alpha-Beta Pruning",
+      title: "ILM-ORA (FYP): Career & University Recommendation System",
       description:
-        "Python-based chess game implementing Min-Max algorithm with Alpha-Beta pruning for optimal AI moves.",
-      tech: ["Python", "AI Algorithms", "Game Development"],
+        "Led data + NLP work on FastAPI microservices for rankings and career guidance; fine-tuned BERT for aspect-based sentiment, improving accuracy by 12% vs baseline.",
+      tech: ["FastAPI", "BERT", "NLP", "Scikit-learn", "MERN"],
+      icon: <Database className="w-6 h-6" />,
+      link: "https://github.com/Muhammad-AbdullahGhani/ILMORA-FYP",
+      gradient: "from-purple-500 to-pink-500",
+    },
+    {
+      title: "QuickChat AI: GenAI Customer Support Chatbot (SaaS)",
+      description:
+        "RAG-based support chatbot that answers from uploaded knowledge bases; includes retrieval pipelines and domain LLM fine-tuning for consistent tone and reliability.",
+      tech: ["RAG", "LLMs", "FastAPI", "Python", "Vector Search"],
       icon: <Brain className="w-6 h-6" />,
-      link: "https://github.com/Muhammad-AbdullahGhani/Chess-Game",
+      link: "https://github.com/Muhammad-AbdullahGhani/QuickChatAI",
       gradient: "from-emerald-500 to-teal-500",
     },
     {
-      title: "Local Skill-Sharing Platform",
+      title: "AI-Powered Multimodal Sentiment Analysis System",
       description:
-        "Full-stack MERN application with admin panel, user management, role-based access, and analytics dashboard.",
-      tech: ["MongoDB", "Express.js", "React", "Node.js"],
-      icon: <Database className="w-6 h-6" />,
-      link: "https://github.com/Muhammad-AbdullahGhani/Local-Skill-Sharing-Platform",
+        "Multimodal model classifying 7 emotions from image + text using ResNet18, with a responsive React UI and Flask backend for inference.",
+      tech: ["PyTorch", "ResNet18", "Flask", "React.js", "Tailwind CSS"],
+      icon: <Code className="w-6 h-6" />,
+      link: "https://github.com/Muhammad-AbdullahGhani/QuickChatAI",
       gradient: "from-orange-500 to-red-500",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Enhanced Custom CSS for 3D transforms */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-900 to-blue-900/20">
+      {/* Premium CSS animations */}
       <style jsx>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes glow-pulse {
+          0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+          50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.5); }
+        }
+        .group:hover {
+          position: relative;
+        }
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
         .perspective-1000 {
           perspective: 4000px;
         }
@@ -471,18 +539,15 @@ export default function Portfolio() {
       `}</style>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-black/20 border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-slate-900/40 border-b border-slate-700/50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <motion.h1
-              className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
-              style={{
-                textShadow: "0 0 30px rgba(6, 182, 212, 0.3)",
-              }}
+              className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              Abdullah Ghani
+              AG
             </motion.h1>
 
             <div className="hidden md:flex space-x-8">
@@ -496,21 +561,15 @@ export default function Portfolio() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`relative text-sm font-medium transition-all duration-300 ${
-                    activeSection === item.id ? "text-cyan-400" : "text-white/70 hover:text-white"
+                    activeSection === item.id ? "text-blue-400" : "text-slate-300 hover:text-white"
                   }`}
-                  style={{
-                    textShadow: activeSection === item.id ? "0 0 10px rgba(6, 182, 212, 0.5)" : "none",
-                  }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {item.label}
                   {activeSection === item.id && (
                     <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"
-                      style={{
-                        boxShadow: "0 0 10px rgba(6, 182, 212, 0.5)",
-                      }}
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 rounded-full"
                       layoutId="activeTab"
                     />
                   )}
@@ -538,10 +597,10 @@ export default function Portfolio() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                  className={`block w-full text-left px-4 py-2 rounded-lg transition-colors text-sm ${
                     activeSection === item.id
-                      ? "text-cyan-400 bg-cyan-400/10"
-                      : "text-white/70 hover:text-white hover:bg-white/10"
+                      ? "text-blue-400 bg-blue-400/10"
+                      : "text-slate-300 hover:text-white hover:bg-slate-700/50"
                   }`}
                 >
                   {item.label}
@@ -552,126 +611,170 @@ export default function Portfolio() {
         </div>
       </nav>
 
-      {/* Hero Section with Extreme 3D Computer */}
-      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Enhanced Background Effects */}
+      {/* Hero Section with Premium Effects */}
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+        {/* Background Effects */}
         <ModernHeroBackground />
 
-        {/* Extreme 3D Computer Setup */}
-        <Extreme3DComputer />
+        {/* Premium animated gradient orbs for depth */}
+        <motion.div
+          className="absolute inset-0 overflow-hidden pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <motion.div
+            className="absolute w-96 h-96 bg-blue-500/25 rounded-full blur-3xl -top-32 -left-32"
+            animate={{ y: [0, 40, 0], x: [0, 20, 0] }}
+            transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            style={{ filter: "blur(80px)" }}
+          />
+          <motion.div
+            className="absolute w-96 h-96 bg-purple-500/20 rounded-full blur-3xl -bottom-32 -right-32"
+            animate={{ y: [0, -40, 0], x: [0, -20, 0] }}
+            transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            style={{ filter: "blur(80px)" }}
+          />
+          <motion.div
+            className="absolute w-80 h-80 bg-blue-400/15 rounded-full blur-3xl top-1/3 right-1/4"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY }}
+            style={{ filter: "blur(100px)" }}
+          />
+        </motion.div>
 
-        <div className="relative z-20 text-center text-white max-w-6xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
+        <div className="relative z-20 text-center text-white max-w-5xl mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            {/* Badge */}
             <motion.div
-              className="mb-8"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              className="mb-8 inline-block"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="relative inline-block">
-                <motion.h1
-                  className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
-                  style={{
-                    textShadow: "0 0 50px rgba(6, 182, 212, 0.3)",
-                  }}
-                  animate={{
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                  }}
-                >
-                  Muhammad Abdullah Ghani
-                </motion.h1>
-
-                {/* Enhanced Glowing effect behind text */}
-                <div
-                  className="absolute inset-0 blur-3xl -z-10"
-                  style={{
-                    background:
-                      "linear-gradient(45deg, rgba(6, 182, 212, 0.2), rgba(88, 80, 236, 0.2))",
-                  }}
-                />
-              </div>
+              <motion.div
+                className="px-4 py-2 rounded-full border border-blue-500/40 bg-blue-500/10 backdrop-blur-md"
+                whileHover={{ scale: 1.05, borderColor: "rgb(59, 130, 246)" }}
+              >
+                <span className="text-sm font-semibold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">
+                  🚀 AI & MLOps Engineer
+                </span>
+              </motion.div>
             </motion.div>
 
-            <motion.p
-              className="text-xl md:text-3xl mb-12 text-white/90 font-light max-w-4xl mx-auto"
-              style={{
-                textShadow: "0 0 20px rgba(255, 255, 255, 0.3)",
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-            >
-              MERN Stack Developer • AI Enthusiast • DevOps Practitioner
-            </motion.p>
-
-            <motion.div
-              className="flex flex-wrap justify-center gap-6 mb-12"
+            <motion.h1
+              className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600 bg-clip-text text-transparent leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
             >
-              {[
-                {
-                  icon: <Code className="w-6 h-6" />,
-                  text: "Full-Stack Development",
-                },
-                { icon: <Brain className="w-6 h-6" />, text: "AI/ML" },
-                { icon: <Server className="w-6 h-6" />, text: "DevOps" },
-              ].map((badge, i) => (
+              Muhammad Abdullah Ghani
+            </motion.h1>
+
+            <motion.p
+              className="text-lg md:text-xl lg:text-2xl mb-8 bg-gradient-to-r from-slate-200 to-slate-300 bg-clip-text text-transparent font-light max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Generative AI • RAG & LLM Fine-Tuning • Production MLOps
+            </motion.p>
+
+            <motion.p
+              className="text-sm md:text-base mb-12 text-slate-300 max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
+            >
+              Building production-grade AI systems with Docker, Kubernetes, and enterprise DevOps. Specialized in microservices architecture and scalable ML pipelines.
+            </motion.p>
+
+            {/* Premium Stats Section */}
+            <motion.div
+              className="flex flex-wrap justify-center gap-8 mb-12 py-8 px-8 rounded-2xl border border-blue-500/30 bg-gradient-to-r from-blue-500/10 to-purple-500/5 backdrop-blur-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              {stats.map((stat, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-xl border border-white/20"
-                  style={{
-                    background: `bg-slate-700/50`,
-                    boxShadow: `0 10px 30px rgba(0, 0, 0, 0.2)`,
-                  }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  initial={{ opacity: 0, y: 20 }}
+                  className="flex flex-col items-center group"
+                  whileHover={{ scale: 1.15, y: -8 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 + i * 0.1 }}
+                  transition={{ delay: 0.35 + i * 0.1 }}
                 >
-                  {badge.icon}
-                  <span className="text-white font-medium" style={{ textShadow: "0 0 10px rgba(255, 255, 255, 0.5)" }}>
-                    {badge.text}
-                  </span>
+                  <motion.div
+                    className="text-blue-400 mb-2 p-2 rounded-lg bg-blue-500/20 group-hover:bg-blue-500/40 transition-all"
+                    whileHover={{ rotate: 10 }}
+                  >
+                    {stat.icon}
+                  </motion.div>
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent group-hover:from-blue-200 group-hover:to-blue-400 transition-all">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs md:text-sm text-slate-400 group-hover:text-slate-300 transition-colors">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
 
             <motion.div
-              className="flex flex-wrap justify-center gap-6"
+              className="flex flex-wrap justify-center gap-4 mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.35 }}
+            >
+              {[
+                { icon: <Code className="w-5 h-5" />, text: "RAG & LLMs" },
+                { icon: <Brain className="w-5 h-5" />, text: "ML Fine-Tuning" },
+                { icon: <Server className="w-5 h-5" />, text: "DevOps & K8s" },
+              ].map((badge, i) => (
+                <motion.div
+                  key={i}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full backdrop-blur-xl border border-blue-500/40 bg-gradient-to-r from-blue-500/15 to-purple-500/10 text-slate-200 hover:border-blue-400/60 hover:from-blue-500/25 hover:to-purple-500/15 transition-all duration-300 group"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 + i * 0.08 }}
+                >
+                  <motion.div
+                    className="text-slate-300 group-hover:text-blue-300 transition-colors"
+                    whileHover={{ rotate: 15 }}
+                  >
+                    {badge.icon}
+                  </motion.div>
+                  <span className="text-sm font-medium">{badge.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="flex flex-wrap justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-lg px-8 py-4 rounded-full border border-white/20"
-                  style={{
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2), 0 0 50px rgba(6, 182, 212, 0.3)",
-                  }}
-                  onClick={generateResumePDF}
+                  className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white font-bold px-10 py-4 rounded-lg border border-blue-500/60 shadow-lg hover:shadow-blue-500/60 transition-all duration-300 relative overflow-hidden group backdrop-blur-sm"
+                  onClick={downloadResume}
                 >
-                  <Download className="w-5 h-5 mr-2" />
-                  Download Resume
+                  <span className="relative z-10 flex items-center">
+                    <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                    Download Resume
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 translate-x-full group-hover:translate-x-0 transition-all duration-500" />
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-lg px-8 py-4 rounded-full border border-white/20"
-                  style={{
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2), 0 0 50px rgba(88, 80, 236, 0.3)",
-                  }}
+                  className="bg-gradient-to-r from-slate-700/60 to-slate-800/60 hover:from-slate-700 hover:to-slate-800 text-slate-100 font-bold px-10 py-4 rounded-lg border border-slate-600/60 shadow-lg hover:shadow-slate-600/60 transition-all duration-300 backdrop-blur-sm"
                   onClick={() => scrollToSection("projects")}
                 >
-                  View Projects
+                  View Projects ↓
                 </Button>
               </motion.div>
             </motion.div>
@@ -679,71 +782,96 @@ export default function Portfolio() {
         </div>
 
         <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 z-20"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-slate-400 z-20"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY }}
         >
-          <ChevronDown className="w-8 h-8" style={{ filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))" }} />
+          <ChevronDown className="w-6 h-6" />
         </motion.div>
       </section>
 
       {/* About Section */}
-      <AnimatedSection id="about" className="py-20 px-6">
-        <div className="container mx-auto max-w-6xl">
+      <AnimatedSection id="about" className="py-24 px-6 bg-gradient-to-b from-blue-900/20 to-slate-900/50 relative overflow-hidden">
+        {/* Background elements */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
+            animate={{ y: [0, 30, 0] }}
+            transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
+          />
+        </motion.div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
           <FadeInUp>
             <div className="text-center mb-16">
+              <motion.div
+                className="inline-block px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 mb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="text-sm font-semibold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">
+                  💡 Skills & Expertise
+                </span>
+              </motion.div>
               <h2
-                className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
-                style={{ textShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
+                className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-600 bg-clip-text text-transparent"
               >
                 About Me
               </h2>
-              <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-                Aspiring MERN Stack Developer, AI Enthusiast, and DevOps Practitioner exploring and building full-stack
-                web applications, intelligent systems, and managing CI/CD pipelines for efficient deployment.
+              <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                Results-driven Software Engineer specializing in Generative AI, LLM fine-tuning, RAG, and MLOps. I build
+                production-grade microservices and ML pipelines using Docker, Kubernetes, and GitHub Actions.
               </p>
             </div>
           </FadeInUp>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {Object.entries(skills).map(([category, skillList], index) => (
               <FadeInUp key={category} delay={index * 0.1}>
-                <GlassCard className="p-6 h-full">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div
-                      className="p-3 rounded-xl bg-slate-700/50"
-                      style={{
-                        boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
-                      }}
-                    >
-                      {category === "Frontend" && <Code className="w-6 h-6 text-cyan-400" />}
-                      {category === "Backend" && <Server className="w-6 h-6 text-green-400" />}
-                      {category === "Database" && <Database className="w-6 h-6 text-blue-400" />}
-                      {category === "AI/ML" && <Brain className="w-6 h-6 text-purple-400" />}
-                      {category === "DevOps" && <Server className="w-6 h-6 text-orange-400" />}
-                      {category === "Languages" && <Code className="w-6 h-6 text-pink-400" />}
-                    </div>
-                    <h3
-                      className="text-xl font-semibold text-white"
-                      style={{ textShadow: "0 0 10px rgba(255, 255, 255, 0.3)" }}
-                    >
-                      {category}
-                    </h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {skillList.map((skill) => (
-                      <Badge
-                        key={skill}
-                        className="bg-slate-700/50 text-slate-300 border-slate-600 hover:bg-slate-700 transition-colors"
-                        style={{
-                          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-                        }}
+                <motion.div whileHover={{ y: -6 }} className="group">
+                  <GlassCard className="p-6 h-full border border-slate-700/50 hover:border-blue-500/60 bg-gradient-to-br from-slate-800/50 to-slate-900/50">
+                    <div className="flex items-center gap-3 mb-4">
+                      <motion.div
+                        className="p-3 rounded-lg bg-gradient-to-br from-blue-500/40 to-purple-500/40 border border-blue-500/40 group-hover:border-blue-400/60 transition-all duration-300 backdrop-blur-sm"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </GlassCard>
+                        {category === "Frontend" && <Code className="w-5 h-5 text-blue-400" />}
+                        {category === "Backend" && <Server className="w-5 h-5 text-green-400" />}
+                        {category === "Database" && <Database className="w-5 h-5 text-cyan-400" />}
+                        {category === "AI/GenAI" && <Brain className="w-5 h-5 text-purple-400" />}
+                        {category === "MLOps/DevOps" && <Server className="w-5 h-5 text-orange-400" />}
+                        {category === "Backend & APIs" && <Server className="w-5 h-5 text-green-400" />}
+                        {category === "Web & Data" && <Database className="w-5 h-5 text-cyan-400" />}
+                        {category === "Languages" && <Code className="w-5 h-5 text-pink-400" />}
+                      </motion.div>
+                      <h3 className="text-lg font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent group-hover:from-blue-200 group-hover:to-white transition-all duration-300">
+                        {category}
+                      </h3>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {skillList.map((skill, i) => (
+                        <motion.div
+                          key={skill}
+                          whileHover={{ scale: 1.08 }}
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ delay: i * 0.05 }}
+                          viewport={{ once: true }}
+                        >
+                          <Badge className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 border border-blue-500/40 hover:from-blue-500/30 hover:to-purple-500/30 hover:border-blue-400/60 transition-all text-xs cursor-default backdrop-blur-sm">
+                            {skill}
+                          </Badge>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </GlassCard>
+                </motion.div>
               </FadeInUp>
             ))}
           </div>
@@ -751,61 +879,108 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Projects Section */}
-      <AnimatedSection id="projects" className="py-20 px-6">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
+      <AnimatedSection id="projects" className="py-24 px-6 bg-gradient-to-b from-slate-900/30 to-blue-900/20 relative overflow-hidden">
+        {/* Animated gradient background elements */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+            animate={{ y: [0, 30, 0] }}
+            transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+            animate={{ y: [0, -30, 0] }}
+            transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY }}
+          />
+        </motion.div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-20">
             <FadeInUp>
-              <h2
-                className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
-                style={{ textShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
+              <motion.div
+                className="inline-block px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 mb-6"
+                whileHover={{ scale: 1.05 }}
               >
-                Featured Projects
-              </h2>
-              <p className="text-xl text-white/70">
-                A showcase of my technical expertise and problem-solving abilities
+                <span className="text-sm font-semibold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">
+                  ✨ Featured Projects
+                </span>
+              </motion.div>
+              <motion.h2
+                className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-600 bg-clip-text text-transparent"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                Production-Grade AI Systems
+              </motion.h2>
+              <p className="text-lg text-slate-300">
+                Real-world solutions built with cutting-edge technology
               </p>
             </FadeInUp>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
-              <FadeInUp key={project.title} delay={index * 0.2}>
-                <GlassCard className="p-6 h-full group">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={`p-4 rounded-xl bg-slate-700/50`}>
-                      {project.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-white group-hover:text-cyan-400 transition-colors">
-                      {project.title}
-                    </h3>
-                  </div>
+              <FadeInUp key={project.title} delay={index * 0.15}>
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  className="group"
+                >
+                  <GlassCard className="p-6 h-full flex flex-col border border-slate-700/50 hover:border-blue-500/50">
+                    {/* Animated gradient background on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/10 group-hover:to-purple-600/10 rounded-xl transition-all duration-500 pointer-events-none" />
 
-                  <p className="text-white/70 text-base leading-relaxed mb-6">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech) => (
-                      <Badge
-                        key={tech}
-                        className="bg-slate-700/50 text-slate-300 border-slate-600 hover:bg-slate-700 transition-colors"
-                        style={{
-                          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-                        }}
+                    <div className="relative flex items-center gap-3 mb-4">
+                      <motion.div
+                        className="p-3 rounded-lg bg-gradient-to-br from-blue-500/40 to-purple-500/40 border border-blue-500/40 group-hover:border-blue-400/60 transition-all duration-300 backdrop-blur-sm"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
+                        {project.icon}
+                      </motion.div>
+                      <h3 className="text-lg font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent group-hover:from-blue-200 group-hover:to-white transition-all duration-300">
+                        {project.title}
+                      </h3>
+                    </div>
 
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow transition-all duration-300"
-                      onClick={() => window.open(project.link, "_blank")}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Project
-                    </Button>
-                  </motion.div>
-                </GlassCard>
+                    <p className="text-slate-300 text-sm leading-relaxed mb-4 flex-grow relative z-10">{project.description}</p>
+
+                    <div className="flex flex-wrap gap-2 mb-6 relative z-10">
+                      {project.tech.map((tech, i) => (
+                        <motion.div
+                          key={tech}
+                          whileHover={{ scale: 1.05 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                          viewport={{ once: true }}
+                        >
+                          <Badge className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 border border-blue-500/40 text-xs hover:from-blue-500/30 hover:to-purple-500/30 hover:border-blue-400/60 transition-all cursor-default backdrop-blur-sm">
+                            {tech}
+                          </Badge>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-auto relative z-10">
+                      <Button
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/40 border border-blue-500/50"
+                        onClick={() => window.open(project.link, "_blank")}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        View on GitHub
+                      </Button>
+                    </motion.div>
+                  </GlassCard>
+                </motion.div>
               </FadeInUp>
             ))}
           </div>
@@ -813,149 +988,172 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Education & Certificates */}
-      <AnimatedSection className="py-20 px-6">
+      <AnimatedSection className="py-24 px-6 bg-gradient-to-b from-slate-900/50 to-blue-900/20">
         <div className="container mx-auto max-w-6xl">
           <FadeInUp>
             <div className="text-center mb-16">
               <h2
-                className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
-                style={{ textShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
+                className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-600 bg-clip-text text-transparent"
               >
                 Education & Certifications
               </h2>
             </div>
           </FadeInUp>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             <FadeInUp delay={0.2}>
-              <GlassCard className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="p-3 rounded-xl bg-slate-700/50"
-                    style={{
-                      boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
-                    }}
-                  >
-                    <Award className="w-6 h-6 text-blue-400" />
+              <motion.div whileHover={{ y: -4 }}>
+                <GlassCard className="p-6 border border-slate-700 hover:border-blue-500/40 group transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <motion.div
+                      className="p-3 rounded-lg bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-blue-500/30 group-hover:border-blue-400/50 transition-all duration-300"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <Award className="w-5 h-5 text-blue-400" />
+                    </motion.div>
+                    <h3 className="text-lg font-semibold text-white group-hover:text-blue-300 transition-colors">Education</h3>
                   </div>
-                  <h3
-                    className="text-xl font-semibold text-white"
-                    style={{ textShadow: "0 0 10px rgba(255, 255, 255, 0.3)" }}
-                  >
-                    Education
-                  </h3>
-                </div>
-                <div className="text-white/70">
-                  <h4 className="text-lg font-semibold text-white mb-2">
-                    National University of Computer and Emerging Sciences
-                  </h4>
-                  <p className="mb-2 text-cyan-300">Software Engineering • Aug 2022 – present</p>
-                  <p className="text-sm leading-relaxed">
-                    Courses: Programming Fundamentals, Object Oriented, Data Structures, Design And Analysis, Database,
-                    Requirement Engineering, Testing, Operating System
-                  </p>
-                </div>
-              </GlassCard>
+                  <div className="text-slate-300">
+                    <h4 className="font-semibold text-white mb-2">
+                      National University of Computer and Emerging Sciences
+                    </h4>
+                    <p className="mb-3 text-blue-300 text-sm">Software Engineering • Aug 2022 – present</p>
+                    <p className="text-sm leading-relaxed text-slate-300">
+                      Courses: Programming Fundamentals, Object Oriented, Data Structures, Design And Analysis, Database,
+                      Requirement Engineering, Testing, Operating System
+                    </p>
+                  </div>
+                </GlassCard>
+              </motion.div>
             </FadeInUp>
 
-            <FadeInUp delay={0.4}>
-              <GlassCard className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="p-3 rounded-xl bg-slate-700/50"
-                    style={{
-                      boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
-                    }}
-                  >
-                    <Award className="w-6 h-6 text-purple-400" />
+            <FadeInUp delay={0.3}>
+              <motion.div whileHover={{ y: -4 }}>
+                <GlassCard className="p-6 border border-slate-700 hover:border-purple-500/40 group transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <motion.div
+                      className="p-3 rounded-lg bg-gradient-to-br from-purple-500/30 to-pink-500/30 border border-purple-500/30 group-hover:border-purple-400/50 transition-all duration-300"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <Award className="w-5 h-5 text-purple-400" />
+                    </motion.div>
+                    <h3 className="text-lg font-semibold text-white group-hover:text-purple-300 transition-colors">Certifications</h3>
                   </div>
-                  <h3
-                    className="text-xl font-semibold text-white"
-                    style={{ textShadow: "0 0 10px rgba(255, 255, 255, 0.3)" }}
-                  >
-                    Certifications
-                  </h3>
-                </div>
-                <div className="text-white/70 space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-white">Supervised Machine Learning:</h4>
-                    <p className="text-sm">Regression and Classification</p>
+                  <div className="text-slate-300 space-y-3">
+                    <div>
+                      <h4 className="font-semibold text-white text-sm">Supervised Machine Learning:</h4>
+                      <p className="text-sm text-slate-400">Regression and Classification</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white text-sm">Advanced Learning Algorithms</h4>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-white">Advanced Learning Algorithms</h4>
-                  </div>
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </motion.div>
             </FadeInUp>
           </div>
         </div>
       </AnimatedSection>
 
       {/* Contact Section */}
-      <AnimatedSection id="contact" className="py-20 px-6">
-        <div className="container mx-auto max-w-4xl text-center">
+      <AnimatedSection id="contact" className="py-24 px-6 relative overflow-hidden">
+        {/* Animated background */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl"
+            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY }}
+          />
+        </motion.div>
+
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
           <FadeInUp>
+            <motion.div
+              className="inline-block px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
+              <span className="text-sm font-semibold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">
+                📞 Get in Touch
+              </span>
+            </motion.div>
+
             <h2
-              className="text-5xl font-bold text-white mb-8 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
-              style={{ textShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
+              className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-600 bg-clip-text text-transparent"
             >
               Let's Connect
             </h2>
-            <p className="text-xl text-white/70 mb-12">
+            <p className="text-lg text-slate-300 mb-12">
               Ready to collaborate on exciting projects or discuss opportunities
             </p>
 
-            <div className="flex flex-wrap justify-center gap-8 mb-12">
+            <motion.div
+              className="flex flex-wrap justify-center gap-8 mb-12 py-10 px-8 rounded-2xl border border-blue-500/40 bg-gradient-to-r from-blue-500/15 to-purple-500/10 backdrop-blur-xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               {[
                 {
-                  icon: <Mail className="w-6 h-6" />,
+                  icon: <Mail className="w-5 h-5" />,
                   text: "abdullaghani206@gmail.com",
                   href: "mailto:abdullaghani206@gmail.com",
                 },
-                { icon: <Phone className="w-6 h-6" />, text: "+92 3168848001", href: "tel:+923168848001" },
-                { icon: <MapPin className="w-6 h-6" />, text: "Islamabad, Pakistan", href: null },
+                { icon: <Phone className="w-5 h-5" />, text: "+92 3168848001", href: "tel:+923168848001" },
+                { icon: <MapPin className="w-5 h-5" />, text: "Islamabad, Pakistan", href: null },
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-center gap-3 text-white/70 hover:text-white transition-colors text-lg"
-                  style={{
-                    textShadow: "0 0 10px rgba(255, 255, 255, 0.3)",
-                    cursor: item.href ? "pointer" : "default",
-                  }}
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="flex items-center gap-3 text-slate-300 hover:text-blue-300 transition-colors cursor-pointer group"
+                  whileHover={{ scale: 1.1, x: 8 }}
                   onClick={() => item.href && window.open(item.href)}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
                 >
-                  {item.icon}
-                  {item.text}
+                  <motion.div
+                    className="p-2 rounded-lg bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-blue-500/40 group-hover:border-blue-400/60 group-hover:from-blue-500/50 group-hover:to-purple-500/50 transition-all duration-300"
+                    whileHover={{ rotate: 15 }}
+                  >
+                    {item.icon}
+                  </motion.div>
+                  <span className="text-sm font-medium">{item.text}</span>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            <div className="flex justify-center gap-6">
+            <div className="flex justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-lg px-8 py-3 rounded-full"
-                  style={{
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2), 0 0 50px rgba(59, 130, 246, 0.3)",
-                  }}
-                  onClick={() => window.open("https://www.linkedin.com/in/muhammad-abdullahghani206/", "_blank")}
+                  className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white font-bold px-10 py-4 rounded-lg border border-blue-500/60 shadow-xl hover:shadow-blue-500/50 transition-all duration-300 backdrop-blur-sm relative overflow-hidden group"
+                  onClick={() => window.open("https://www.linkedin.com/in/abdullahghani", "_blank")}
                 >
-                  <Linkedin className="w-5 h-5 mr-2" />
-                  LinkedIn
+                  <span className="relative z-10 flex items-center">
+                    <Linkedin className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                    LinkedIn
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 translate-x-full group-hover:translate-x-0 transition-all duration-500" />
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-slate-700 hover:bg-slate-800 text-lg px-8 py-3 rounded-full"
-                  style={{
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2), 0 0 50px rgba(75, 85, 99, 0.3)",
-                  }}
+                  className="bg-gradient-to-r from-slate-700/70 to-slate-800/70 hover:from-slate-700 hover:to-slate-800 text-white font-bold px-10 py-4 rounded-lg border border-slate-600/60 shadow-xl hover:shadow-slate-600/50 transition-all duration-300 backdrop-blur-sm relative overflow-hidden group"
                   onClick={() => window.open("https://github.com/Muhammad-AbdullahGhani?tab=repositories", "_blank")}
                 >
-                  <Github className="w-5 h-5 mr-2" />
-                  GitHub
+                  <span className="relative z-10 flex items-center">
+                    <Github className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                    GitHub
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 translate-x-full group-hover:translate-x-0 transition-all duration-500" />
                 </Button>
               </motion.div>
             </div>
@@ -964,9 +1162,17 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-white/10">
-        <div className="container mx-auto text-center text-white/50">
-          <p>&copy; 2024 Muhammad Abdullah Ghani. All rights reserved.</p>
+      <footer className="py-8 px-6 border-t border-slate-700/50 bg-gradient-to-r from-slate-900/50 to-blue-900/30">
+        <div className="container mx-auto text-center">
+          <motion.p
+            className="text-slate-400 hover:text-slate-300 transition-colors"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            © 2024 Muhammad Abdullah Ghani. Crafted with passion and precision.
+          </motion.p>
         </div>
       </footer>
     </div>
