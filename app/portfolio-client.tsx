@@ -92,6 +92,16 @@ const generateResumePDFOriginal = () => {
         <div class="section">
           <div class="section-title">PROJECTS</div>
           <div class="project">
+            <h3>Autonomous Self-Healing Infrastructure (Agentic AI & DevOps)</h3>
+            <p>Architected an end-to-end Agentic AI system using LangGraph to autonomously monitor, diagnose, and repair microservice infrastructure failures in real-time.</p>
+            <ul>
+              <li>Integrated Prometheus and Loki to build a unified "nervous system" for anomaly and failure detection across cloud environments.</li>
+              <li>Developed FastAPI microservice testbed containerized with Docker and orchestrated via Kubernetes on Azure AKS for automated recovery workflows.</li>
+              <li>Implemented PostgreSQL-backed audit trails for AI reasoning and corrective actions to support privacy compliance and human-in-the-loop oversight.</li>
+            </ul>
+            <div><span class="tech-item">Python</span><span class="tech-item">LangGraph</span><span class="tech-item">Kubernetes</span><span class="tech-item">Docker</span><span class="tech-item">PostgreSQL</span><span class="tech-item">Azure</span></div>
+          </div>
+          <div class="project">
             <h3>FinTech Adaptive Forecasting System</h3>
             <p>Microservices platform that continuously retrains LSTM & Transformer models on real-time market data.</p>
             <ul>
@@ -242,6 +252,88 @@ function Extreme3DComputer() {
           ></div>
         </motion.div>
       </motion.div>
+    </div>
+  )
+}
+
+function Agentic3DNeuralCore() {
+  const nodes = [
+    { x: "18%", y: "22%" },
+    { x: "78%", y: "20%" },
+    { x: "82%", y: "70%" },
+    { x: "24%", y: "76%" },
+    { x: "52%", y: "50%" },
+  ]
+
+  return (
+    <div className="absolute inset-0 pointer-events-none z-10">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          className="relative w-[380px] h-[380px] md:w-[500px] md:h-[500px]"
+          style={{ transformStyle: "preserve-3d" }}
+          animate={{ rotateZ: [0, 360] }}
+          transition={{ duration: 35, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        >
+          {[0, 1, 2].map((ring) => (
+            <motion.div
+              key={ring}
+              className="absolute inset-0 rounded-full border border-blue-400/20"
+              style={{
+                transform: `translateZ(${ring * 20}px) scale(${1 - ring * 0.12})`,
+                boxShadow: "0 0 30px rgba(59, 130, 246, 0.15)",
+              }}
+              animate={{ rotateX: [0, 360], rotateY: [360, 0] }}
+              transition={{
+                duration: 16 + ring * 5,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            />
+          ))}
+
+          {nodes.map((node, i) => (
+            <motion.div
+              key={`${node.x}-${node.y}`}
+              className="absolute w-3 h-3 md:w-4 md:h-4 rounded-full bg-cyan-300"
+              style={{
+                left: node.x,
+                top: node.y,
+                boxShadow: "0 0 16px rgba(34, 211, 238, 0.8)",
+              }}
+              animate={{ scale: [1, 1.6, 1], opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 2 + i * 0.3, repeat: Number.POSITIVE_INFINITY }}
+            />
+          ))}
+
+          {nodes.slice(0, -1).map((_, i) => (
+            <motion.div
+              key={`edge-${i}`}
+              className="absolute h-px bg-gradient-to-r from-blue-400/20 via-cyan-300/70 to-blue-400/20 origin-left"
+              style={{
+                left: "52%",
+                top: "50%",
+                width: i % 2 === 0 ? "170px" : "150px",
+                transform:
+                  i === 0
+                    ? "rotate(-145deg)"
+                    : i === 1
+                      ? "rotate(-35deg)"
+                      : i === 2
+                        ? "rotate(30deg)"
+                        : "rotate(140deg)",
+              }}
+              animate={{ opacity: [0.2, 0.9, 0.2] }}
+              transition={{ duration: 2.2 + i * 0.2, repeat: Number.POSITIVE_INFINITY }}
+            />
+          ))}
+        </motion.div>
+      </div>
+
+      <motion.div
+        className="absolute left-1/2 top-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-emerald-300/20"
+        animate={{ scale: [0.85, 1.08, 0.85], opacity: [0.2, 0.65, 0.2] }}
+        transition={{ duration: 3.2, repeat: Number.POSITIVE_INFINITY }}
+      />
     </div>
   )
 }
@@ -471,6 +563,15 @@ export default function Portfolio() {
 
   const projects = [
     {
+      title: "Autonomous Self-Healing Infrastructure (Agentic AI & DevOps)",
+      description:
+        "Architected an end-to-end Agentic AI system with LangGraph to monitor, diagnose, and auto-repair microservice failures. Integrated Prometheus + Loki telemetry, AKS recovery workflows, and a PostgreSQL audit trail for compliant human-in-the-loop operations.",
+      tech: ["Python", "LangGraph", "FastAPI", "Kubernetes", "Docker", "PostgreSQL", "Azure", "Prometheus", "Loki"],
+      icon: <Server className="w-6 h-6" />,
+      link: "https://github.com/Muhammad-AbdullahGhani",
+      gradient: "from-indigo-500 to-cyan-500",
+    },
+    {
       title: "FinTech Adaptive Forecasting System",
       description:
         "Microservices platform that continuously retrains LSTM & Transformer models on real-time market data with drift detection (MAE/RMSE) and production-grade CI/CD.",
@@ -615,6 +716,7 @@ export default function Portfolio() {
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
         {/* Background Effects */}
         <ModernHeroBackground />
+        <Agentic3DNeuralCore />
 
         {/* Premium animated gradient orbs for depth */}
         <motion.div
