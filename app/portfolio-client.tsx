@@ -8,31 +8,31 @@ import { Download, ExternalLink, Github, Linkedin, Mail, Sparkles, Wrench, Brain
 
 const projects = [
   {
-    title: "SmartFlow AI — Intelligent Business Workflow Automation SaaS",
-    description:
-      "Multi-tenant SaaS platform that automates complex workflows through natural language using LangGraph multi-agent systems, RAG, and tool orchestration.",
-    tech: ["Next.js 15", "FastAPI", "LangGraph", "PostgreSQL", "Docker", "Azure"],
-    link: "https://github.com/Muhammad-AbdullahGhani",
-  },
-  {
     title: "Autonomous Self-Healing Infrastructure",
     description:
-      "Agentic AI platform for real-time detection, diagnosis, and autonomous repair of microservice failures with Prometheus, Loki, and AKS workflows.",
-    tech: ["Python", "Kubernetes", "Docker", "PostgreSQL", "Azure"],
+      "Agentic AI platform for real-time detection, diagnosis, and autonomous repair of microservice failures with Prometheus, Loki, and AKS workflows. 80% reduction in manual intervention.",
+    tech: ["Python", "LangGraph", "Kubernetes", "Docker", "PostgreSQL", "Azure AKS", "Prometheus", "Loki"],
     link: "https://github.com/Muhammad-AbdullahGhani",
   },
   {
     title: "FinTech Adaptive Forecasting System",
-    description: "Continuously retrained LSTM/Transformer forecasting pipelines with drift detection and production-grade CI/CD.",
-    tech: ["Python", "LSTM", "Transformers", "MLOps", "GitHub Actions"],
+    description: "Continuously retrained LSTM/Transformer forecasting pipelines with drift detection and zero-downtime Kubernetes deployments.",
+    tech: ["Python", "LSTM", "Transformers", "MLOps", "Docker", "Kubernetes", "GitHub Actions CI/CD"],
     link: "https://github.com/Muhammad-AbdullahGhani/Fintech_Forecasting_System",
   },
   {
-    title: "ILM-ORA (FYP)",
+    title: "ILM-ORA: AI Career & University Recommendation System (FYP)",
     description:
-      "Career and university recommendation platform with FastAPI services and BERT-driven sentiment analysis for data-backed guidance.",
-    tech: ["FastAPI", "BERT", "NLP", "MERN", "Scikit-learn"],
+      "Fine-tuned BERT for Aspect-Based Sentiment Analysis (12% accuracy gain) with scalable FastAPI microservices integrating HEC/alumni data for personalized guidance.",
+    tech: ["FastAPI", "BERT", "MERN Stack", "Scikit-learn", "Embeddings", "HEC Datasets"],
     link: "https://github.com/Muhammad-AbdullahGhani/ILMORA-FYP",
+  },
+  {
+    title: "Nuvoltero — AI Content Repurposing Pipeline",
+    description:
+      "Automated content repurposing pipeline extracting and transcribing audio from YouTube using OpenAI Whisper (100% processing). RAG pipeline with Gemini API generates platform-optimized promotional content, reducing creation time by ~70%.",
+    tech: ["Python", "Gemini API", "RAG", "OpenAI Whisper", "FastAPI", "Chroma Vector DB"],
+    link: "https://github.com/Muhammad-AbdullahGhani",
   },
   {
     title: "QuickChat AI",
@@ -41,6 +41,43 @@ const projects = [
     tech: ["RAG", "LLMs", "FastAPI", "Python"],
     link: "https://github.com/Muhammad-AbdullahGhani/QuickChatAI",
   },
+]
+
+const experiences = [
+  {
+    title: "Backend AI Engineering Intern",
+    company: "FlyRank AI (Remote)",
+    period: "Jul 2026 – Present",
+    description: "Building RAG pipelines, autonomous AI agents, and production API services using Python and LLMs; completing AI Fluency capstone toward verifiable credential.",
+    highlights: ["RAG Pipelines", "Autonomous AI Agents", "Production APIs", "Python", "LLMs"],
+  },
+  {
+    title: "Freelance NLP / ML Engineer",
+    company: "Upwork — Alpha Data Science (Malaysia)",
+    period: "Apr 2026",
+    description: "Delivered 7 production-quality sentiment analysis notebooks covering full ML pipeline: EDA, preprocessing, LSTM-to-transformer progression, and evaluation (F1/accuracy). Rated 4.9/5.",
+    highlights: ["Sentiment Analysis", "ML Pipeline", "LSTM", "Transformers", "F1/Accuracy Evaluation"],
+  },
+]
+
+const skills = {
+  "AI & LLMs": ["LangChain", "LangGraph", "RAG", "Gemini API", "Prompt Engineering", "LLM Fine-Tuning", "BERT", "DeBERTa", "Llama", "LSTM", "Embeddings", "Chroma", "FAISS"],
+  "ML Frameworks": ["PyTorch", "Hugging Face Transformers", "Scikit-learn"],
+  "MLOps & Infrastructure": ["Docker", "Kubernetes", "Azure AKS", "Prometheus", "Loki", "GitHub Actions CI/CD", "FastAPI", "Nginx"],
+  "Languages": ["Python", "JavaScript (Node.js)", "C++", "SQL"],
+  "Web & Databases": ["React.js", "Next.js", "Flask", "Tailwind CSS", "PostgreSQL", "MongoDB"],
+}
+
+const education = {
+  degree: "B.S. Software Engineering",
+  institution: "National University of Computer & Emerging Sciences (FAST-NUCES), Islamabad",
+  fyp: "ILM-ORA — AI-powered career & university recommendation system using BERT, RAG, and sentiment analysis.",
+}
+
+const certifications = [
+  { title: "Advanced Learning Algorithms", issuer: "Stanford / Coursera", date: "Jul 2024", id: "J5BC2BZS3BXQ" },
+  { title: "Supervised Machine Learning: Regression & Classification", issuer: "DeepLearning.AI / Coursera", date: "Jul 2024", id: "MPY9SJKG8YRY" },
+  { title: "Introduction to Artificial Intelligence", issuer: "LinkedIn Learning", date: "2022 – Present" },
 ]
 
 const featureCards = [
@@ -154,6 +191,7 @@ export default function Portfolio() {
           <nav className="hidden gap-6 text-xs text-white/75 md:flex">
             {[
               { label: "About", id: "home" },
+              { label: "Experience", id: "experience" },
               { label: "Projects", id: "projects" },
               { label: "Skills", id: "skills" },
               { label: "Contact", id: "contact" },
@@ -242,47 +280,80 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="skills" className="mt-8 snap-start scroll-mt-28 rounded-2xl border border-white/10 bg-black/30 p-5 pt-12">
-          <p className="text-center text-sm text-white/65">
-            Core technologies I use in real projects
+        <section className="mt-12 snap-start scroll-mt-28 rounded-2xl border border-white/10 bg-black/30 p-6 md:p-8">
+          <h2 className="text-2xl font-semibold">Professional Summary</h2>
+          <p className="mt-4 text-sm text-white/80 leading-relaxed">
+            AI Engineer specializing in Generative AI, LLM fine-tuning, RAG pipelines, prompt engineering, and MLOps. Delivered measurable impact across FinTech, SaaS, and autonomous infrastructure — 12% accuracy gains, 80% reduction in manual intervention, and zero-downtime Kubernetes deployments. Proficient in LangChain/LangGraph, vector databases, embeddings, and cloud-native AI deployment on Azure AKS.
           </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-8 text-sm text-white/70">
-            {[
-              "LangGraph",
-              "RAG",
-              "LLM Fine-Tuning",
-              "Transformers",
-              "FastAPI",
-              "Node.js",
-              "Docker",
-              "Next.js",
-              "React",
-              "TypeScript",
-              "Kubernetes",
-              "PostgreSQL",
-            ].map((brand) => (
-              <span key={brand} className="opacity-85">
-                {brand}
-              </span>
+        </section>
+
+        <section id="experience" className="mt-8 snap-start scroll-mt-28 rounded-2xl border border-white/10 bg-black/30 p-6 md:p-8">
+          <h2 className="text-2xl font-semibold mb-6">Experience</h2>
+          <div className="space-y-6">
+            {experiences.map((exp, idx) => (
+              <div key={idx} className="border-l-2 border-orange-300/50 pl-4">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold">{exp.title}</h3>
+                    <p className="text-sm text-orange-300">{exp.company}</p>
+                  </div>
+                </div>
+                <p className="mt-2 text-sm text-white/75">{exp.description}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {exp.highlights.map((highlight) => (
+                    <Badge key={highlight} className="border-amber-300/30 bg-amber-400/10 text-amber-100 text-xs">
+                      {highlight}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </section>
 
-        <section className="mt-12 snap-start scroll-mt-28 flex min-h-[92svh] flex-col justify-center">
-          <p className="text-center text-xs uppercase tracking-[0.25em] text-white/50">Our AI Tools</p>
-          <h2 className="mt-3 text-center text-3xl font-semibold md:text-5xl">
-            Scalable APIs for
-            <br />
-            Autonomous Intelligence
-          </h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {featureCards.map((card) => (
-              <div key={card.title} className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-5">
-                <div className="mb-4 inline-flex rounded-xl border border-white/15 bg-white/[0.06] p-2">
-                  <card.icon className="h-5 w-5 text-orange-300" />
+        <section id="skills" className="mt-8 snap-start scroll-mt-28 rounded-2xl border border-white/10 bg-black/30 p-5 pt-12">
+          <h2 className="text-2xl font-semibold">Technical Skills</h2>
+          <p className="mt-2 text-sm text-white/65">
+            Production expertise across AI, ML frameworks, MLOps, and full-stack engineering
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {Object.entries(skills).map(([category, skillList]) => (
+              <div key={category} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <h3 className="font-semibold text-orange-300">{category}</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {skillList.map((skill) => (
+                    <span key={skill} className="rounded-full border border-white/20 bg-white/[0.05] px-3 py-1 text-xs text-white/80">
+                      {skill}
+                    </span>
+                  ))}
                 </div>
-                <h3 className="text-lg font-semibold">{card.title}</h3>
-                <p className="mt-2 text-sm text-white/70">{card.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-12 snap-start scroll-mt-28 rounded-2xl border border-white/10 bg-black/30 p-6 md:p-8">
+          <h2 className="text-2xl font-semibold mb-6">Education</h2>
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+            <h3 className="text-lg font-semibold">{education.degree}</h3>
+            <p className="text-sm text-orange-300 mt-1">{education.institution}</p>
+            <div className="mt-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <p className="text-sm text-white/75">
+                <span className="font-semibold text-white">Final Year Project (FYP):</span> {education.fyp}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-8 snap-start scroll-mt-28 rounded-2xl border border-white/10 bg-black/30 p-6 md:p-8">
+          <h2 className="text-2xl font-semibold mb-6">Certifications</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {certifications.map((cert, idx) => (
+              <div key={idx} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <h3 className="font-semibold text-white">{cert.title}</h3>
+                <p className="text-xs text-orange-300 mt-1">{cert.issuer}</p>
+                <p className="text-xs text-white/60 mt-2">{cert.date}</p>
+                {cert.id && <p className="text-xs text-white/50 mt-1">ID: {cert.id}</p>}
               </div>
             ))}
           </div>
