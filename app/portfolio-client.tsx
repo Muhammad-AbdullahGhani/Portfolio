@@ -8,6 +8,13 @@ import { Download, ExternalLink, Github, Linkedin, Mail, Sparkles, Wrench, Brain
 
 const projects = [
   {
+    title: "Voice-Activated SRE (Agentic Infrastructure Supervisor)",
+    description:
+      "A real-time, voice-driven AI co-pilot designed to monitor, scale, and recycle Kubernetes pods using natural speech. Integrates LangGraph, LiveKit WebRTC, WebSockets, and a Next.js terminal dashboard.",
+    tech: ["FastAPI", "LangGraph", "Kubernetes", "LiveKit WebRTC", "Next.js", "WebSockets", "VAD", "Whisper STT"],
+    link: "https://github.com/Muhammad-AbdullahGhani/Voice_SRE",
+  },
+  {
     title: "Autonomous Self-Healing Infrastructure",
     description:
       "Agentic AI platform for real-time detection, diagnosis, and autonomous repair of microservice failures with Prometheus, Loki, and AKS workflows. 80% reduction in manual intervention.",
@@ -63,9 +70,9 @@ const experiences = [
 const skills = {
   "AI & LLMs": ["LangChain", "LangGraph", "RAG", "Gemini API", "Prompt Engineering", "LLM Fine-Tuning", "BERT", "DeBERTa", "Llama", "LSTM", "Embeddings", "Chroma", "FAISS"],
   "ML Frameworks": ["PyTorch", "Hugging Face Transformers", "Scikit-learn"],
-  "MLOps & Infrastructure": ["Docker", "Kubernetes", "Azure AKS", "Prometheus", "Loki", "GitHub Actions CI/CD", "FastAPI", "Nginx"],
+  "MLOps & Infrastructure": ["Docker", "Kubernetes", "Azure AKS", "LiveKit WebRTC", "Prometheus", "Loki", "GitHub Actions CI/CD", "FastAPI", "Nginx"],
   "Languages": ["Python", "JavaScript (Node.js)", "C++", "SQL"],
-  "Web & Databases": ["React.js", "Next.js", "Flask", "Tailwind CSS", "PostgreSQL", "MongoDB"],
+  "Web & Databases": ["React.js", "Next.js", "Flask", "Tailwind CSS", "WebSockets", "PostgreSQL", "MongoDB"],
 }
 
 const education = {
