@@ -4,7 +4,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Download, ExternalLink, Github, Linkedin, Mail, Sparkles, Wrench, BrainCircuit, Layers3 } from "lucide-react"
+import { Download, ExternalLink, Github, Linkedin, Mail, Sparkles, Wrench, BrainCircuit, Layers3, GitPullRequest, GitMerge } from "lucide-react"
 
 const projects = [
   {
@@ -64,6 +64,26 @@ const experiences = [
     period: "Apr 2026",
     description: "Delivered 7 production-quality sentiment analysis notebooks covering full ML pipeline: EDA, preprocessing, LSTM-to-transformer progression, and evaluation (F1/accuracy). Rated 4.9/5.",
     highlights: ["Sentiment Analysis", "ML Pipeline", "LSTM", "Transformers", "F1/Accuracy Evaluation"],
+  },
+]
+
+const openSourceContributions = [
+  {
+    project: "VidXP (Video eXPlain)",
+    repo: "grayhatdevelopers/vidxp",
+    repoUrl: "https://github.com/grayhatdevelopers/vidxp",
+    prTitle: "fix(fusion): bound moment components to shared overlapping interval (#87)",
+    prNumber: 141,
+    prUrl: "https://github.com/grayhatdevelopers/vidxp/pull/141",
+    status: "Merged",
+    description:
+      "VidXP is an open-source natural language video indexing engine connecting LLM agents (Claude, Hermes, OpenClaw) to video understanding with low token overhead.",
+    highlights: [
+      "Resolved a critical moment grouping anomaly in _connected_components and _shared_overlap_components where multi-modal search hits across video modalities produced sprawling intervals.",
+      "Restructured multi-modal search fusion logic to tightly bound moments to their true shared overlapping window (max start and min end).",
+      "Authored extensive test suites in tests/test_search_fusion.py (+115 lines) validating temporal alignment, moment ordering, and boundary edge cases.",
+    ],
+    tech: ["Python", "Multi-Modal Search", "Pytest", "Temporal Alignment", "Vector Search"],
   },
 ]
 
@@ -199,8 +219,9 @@ export default function Portfolio() {
             {[
               { label: "About", id: "home" },
               { label: "Experience", id: "experience" },
-              { label: "Projects", id: "projects" },
+              { label: "Open Source", id: "opensource" },
               { label: "Skills", id: "skills" },
+              { label: "Projects", id: "projects" },
               { label: "Contact", id: "contact" },
             ].map((item) => (
               <button key={item.id} onClick={() => scrollToSection(item.id)} className="hover:text-white">
@@ -282,7 +303,7 @@ export default function Portfolio() {
             </motion.div>
 
             <div className="absolute bottom-2 rounded-full border border-white/15 bg-black/70 px-4 py-2 text-xs text-white/85 backdrop-blur-xl">
-              Software Engineer · GenAI & Full Stack · Open to Work
+              Software Engineer · GenAI & Full Stack · Open Source Contributor
             </div>
           </div>
         </section>
@@ -290,7 +311,7 @@ export default function Portfolio() {
         <section className="mt-12 snap-start scroll-mt-28 rounded-2xl border border-white/10 bg-black/30 p-6 md:p-8">
           <h2 className="text-2xl font-semibold">Professional Summary</h2>
           <p className="mt-4 text-sm text-white/80 leading-relaxed">
-            AI Engineer specializing in Generative AI, LLM fine-tuning, RAG pipelines, prompt engineering, and MLOps. Delivered measurable impact across FinTech, SaaS, and autonomous infrastructure — 12% accuracy gains, 80% reduction in manual intervention, and zero-downtime Kubernetes deployments. Proficient in LangChain/LangGraph, vector databases, embeddings, and cloud-native AI deployment on Azure AKS.
+            AI Engineer specializing in Generative AI, LLM fine-tuning, RAG pipelines, prompt engineering, and MLOps. Delivered measurable impact across FinTech, SaaS, autonomous infrastructure, and open-source multi-modal indexing engines — 12% accuracy gains, 80% reduction in manual intervention, and zero-downtime Kubernetes deployments. Proficient in LangChain/LangGraph, vector databases, embeddings, and cloud-native AI deployment on Azure AKS.
           </p>
         </section>
 
@@ -310,6 +331,101 @@ export default function Portfolio() {
                   {exp.highlights.map((highlight) => (
                     <Badge key={highlight} className="border-amber-300/30 bg-amber-400/10 text-amber-100 text-xs">
                       {highlight}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="opensource" className="mt-8 snap-start scroll-mt-28 rounded-2xl border border-white/10 bg-black/30 p-6 md:p-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-300">
+                <GitPullRequest className="h-3.5 w-3.5" />
+                Open Source Contributions
+              </div>
+              <h2 className="mt-3 text-2xl font-semibold">Open Source & Community</h2>
+              <p className="mt-1 text-sm text-white/65">
+                Contributing core fixes, multi-modal search optimizations, and test suites to AI developer tools.
+              </p>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-white/20 bg-white/[0.03] text-white/80 hover:bg-white/[0.08] hover:text-white shrink-0 self-start md:self-auto"
+              onClick={() => window.open("https://github.com/Muhammad-AbdullahGhani", "_blank")}
+            >
+              <Github className="mr-2 h-4 w-4" />
+              Follow on GitHub
+            </Button>
+          </div>
+
+          <div className="space-y-6">
+            {openSourceContributions.map((contrib) => (
+              <div
+                key={contrib.prUrl}
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:border-purple-400/40 hover:bg-white/[0.05]"
+              >
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                  <div className="space-y-1.5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-xl font-semibold text-white">{contrib.project}</h3>
+                      <Badge className="border-emerald-400/30 bg-emerald-500/15 text-emerald-300 text-xs font-mono">
+                        <GitMerge className="mr-1.5 h-3 w-3" />
+                        PR #{contrib.prNumber} {contrib.status}
+                      </Badge>
+                    </div>
+                    <a
+                      href={contrib.repoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-white/60 hover:text-purple-300 transition-colors"
+                    >
+                      <Github className="h-3.5 w-3.5" />
+                      {contrib.repo}
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+
+                  <Button
+                    onClick={() => window.open(contrib.prUrl, "_blank")}
+                    size="sm"
+                    className="bg-purple-600 hover:bg-purple-500 text-white shadow-lg shadow-purple-600/20 shrink-0"
+                  >
+                    <GitPullRequest className="mr-2 h-4 w-4" />
+                    View Pull Request
+                  </Button>
+                </div>
+
+                <div className="mt-4 rounded-lg border border-purple-500/20 bg-purple-950/20 px-3 py-2 text-xs font-mono text-purple-200">
+                  <span className="font-semibold text-purple-300">Pull Request:</span> {contrib.prTitle}
+                </div>
+
+                <p className="mt-3 text-sm text-white/75 leading-relaxed">{contrib.description}</p>
+
+                <div className="mt-4 rounded-xl border border-white/5 bg-black/40 p-4">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
+                    <Sparkles className="h-3.5 w-3.5" /> Key Contribution & Architectural Impact
+                  </h4>
+                  <ul className="mt-2.5 space-y-2 text-sm text-white/80">
+                    {contrib.highlights.map((point, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400" />
+                        <span className="leading-relaxed">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {contrib.tech.map((tech) => (
+                    <Badge
+                      key={tech}
+                      className="border-white/10 bg-white/[0.05] text-white/80 text-xs font-medium"
+                    >
+                      {tech}
                     </Badge>
                   ))}
                 </div>
